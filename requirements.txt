@@ -1,0 +1,2 @@
+oslo.config>=2.1.0
+pymongo==3.2
