@@ -13,6 +13,19 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+from hodor.task import Task
+from hodor.db import constants as db_cons
 
-class History(object):
-    pass
+class History(Task):
+
+    def __init__(self):
+        super(History, self).__init__()
+        self.db_connection.collection_name = db_cons.RIB_HISTORY_EVPN
+
+    def insert(self, prefix, attr, withdraw=False):
+        record = {
+            'attr': attr,
+            'prefix': prefix,
+            'action': 'update' if withdraw is False else 'withdraw'
+        }
+        self.db_connection.get_collection().insert_one(record)

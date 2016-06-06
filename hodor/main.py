@@ -64,10 +64,10 @@ def main():
     consumer = None
     try:
         prepare()
-        consumer = Consumer()
+        consumer = Consumer(seq=0)
         consumer.start()
     except Exception as e:
-        print e
+        print traceback.format_exc()
         if consumer:
             consumer.stop()
     except KeyboardInterrupt:

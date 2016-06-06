@@ -13,15 +13,9 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from oslo_config import cfg
+RIB_PREFIX_EVPN = 'RIB_PREFIX_EVPN'
+RIB_ATTRIBUTE_EVPN = 'RIB_ATTRIBUTE_EVPN'
 
-from hodor.db.mongo import MongoOpt
+RIB_TABLES = [RIB_PREFIX_EVPN, RIB_ATTRIBUTE_EVPN]
 
-CONF = cfg.CONF
-
-
-class Task(object):
-
-    def __init__(self):
-        self.db_connection = MongoOpt(connection_url=CONF.database.url, db_name=CONF.database.name)
-
+RIB_HISTORY_EVPN = 'RIB_HISTORY_EVPN'
