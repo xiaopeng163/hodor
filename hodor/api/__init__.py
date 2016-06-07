@@ -12,3 +12,26 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
+
+from __future__ import unicode_literals
+import json
+
+from flask import Flask, request
+
+
+app = Flask(__name__)
+
+
+@app.route('/links')
+def getSubPages():
+    page = request.args.get("page")
+    return json.dumps(first_paragraph_links(page))
+
+
+@app.errorhandler(500)
+def internalerror(error):
+    return str(error)
+
+
+if __name__ == "__main__":
+    app.run(threaded=True, debug=True, port=12345)
