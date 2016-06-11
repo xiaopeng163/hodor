@@ -22,10 +22,9 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-@app.route('/links')
-def getSubPages():
-    page = request.args.get("page")
-    return json.dumps(first_paragraph_links(page))
+@app.route('/')
+def root():
+    pass
 
 
 @app.errorhandler(500)
